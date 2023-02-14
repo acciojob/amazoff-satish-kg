@@ -13,6 +13,7 @@ public class OrderRepository {
     HashMap<String, String> orderPartnerMap;
     HashMap<String, Order> unassignedOrderMap;
     HashMap<String, Order> orderMap;
+//    HashMap<String, String> orderTimeStringMap;
     HashMap<String, DeliveryPartner> deliveryPartnerHashMap;
     HashMap<String, List<String>> deliveryPartnerOrderListMap;
 
@@ -22,6 +23,7 @@ public class OrderRepository {
         this.orderMap = new HashMap<String, Order>();
         this.orderPartnerMap = new HashMap<String, String>();
         this.unassignedOrderMap = new HashMap<String, Order>();
+//        this.orderTimeStringMap = new HashMap<String, String>();
         this.deliveryPartnerHashMap = new HashMap<String, DeliveryPartner>();
         this.deliveryPartnerOrderListMap = new HashMap<String, List<String>>();
     }
@@ -125,10 +127,27 @@ public class OrderRepository {
             time = orderMap.get(orderId).getDeliveryTime();
             if(time > lastDeliveryTime) {
                 lastDeliveryTime = time;
-                lastDeliveryTimeString = orderMap.get(orderId).getDeliveryTimeString();
             }
         }
-        return lastDeliveryTimeString;
+        return intToString(lastDeliveryTime);
+    }
+
+    public String intToString(int intTime){
+        String stringTime = "";
+        int hours = intTime/60;
+        if(hours<10){
+            stringTime = stringTime+"0"+hours;
+        }else{
+            stringTime = stringTime+hours;
+        }
+        stringTime = stringTime+":";
+        intTime = intTime % 60;
+        if(intTime < 10){
+            stringTime = stringTime+"0"+intTime;
+        }else{
+            stringTime = stringTime+intTime;
+        }
+        return stringTime;
     }
 
     public int timeStringToTimeIntConvertor(String time){
@@ -144,4 +163,5 @@ public class OrderRepository {
 //        System.out.println(hours);
         return hours*60+mins;
     }
+
 }
