@@ -4,22 +4,22 @@ public class Order {
 
     private String id;
     private int deliveryTime;
-    private String deliveryTimeString;
+//    private String deliveryTimeString;
 
-    public String getDeliveryTimeString() {
-        return deliveryTimeString;
-    }
-
-    public void setDeliveryTimeString(String deliveryTimeString) {
-        this.deliveryTimeString = deliveryTimeString;
-    }
+//    public String getDeliveryTimeString() {
+//        return deliveryTimeString;
+//    }
+//
+//    public void setDeliveryTimeString(String deliveryTimeString) {
+//        this.deliveryTimeString = deliveryTimeString;
+//    }
 
     public Order(String id, String deliveryTime) {
 
         // The deliveryTime has to converted from string to int and then stored in the attribute
         //deliveryTime  = HH*60 + MM
         this.id = id;
-        this.deliveryTimeString = deliveryTime;
+//        this.deliveryTimeString = deliveryTime;
         this.deliveryTime = deliveryTimeConvertor(deliveryTime);
     }
 
