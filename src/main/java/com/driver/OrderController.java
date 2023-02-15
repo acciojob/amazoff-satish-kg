@@ -55,9 +55,8 @@ public class OrderController {
     @GetMapping("/get-order-by-id/{orderId}")
     public ResponseEntity<Order> getOrderById(@PathVariable String orderId){
 
-        Order order= null;
         //order should be returned with an orderId.
-        order = orderService.getOrderById(orderId);
+        Order order = orderService.getOrderById(orderId);
 //        if(order != null) return new ResponseEntity<>(order, HttpStatus.FOUND);
 ////        HAVE TO COMPLETE THIS
         return new ResponseEntity<>(order, HttpStatus.CREATED);
@@ -66,20 +65,16 @@ public class OrderController {
     @GetMapping("/get-partner-by-id/{partnerId}")
     public ResponseEntity<DeliveryPartner> getPartnerById(@PathVariable String partnerId){
 
-        DeliveryPartner deliveryPartner = null;
-
         //deliveryPartner should contain the value given by partnerId
-        deliveryPartner = orderService.getDeliveryPartnerById(partnerId);
+        DeliveryPartner deliveryPartner = orderService.getDeliveryPartnerById(partnerId);
         return new ResponseEntity<>(deliveryPartner, HttpStatus.CREATED);
     }
 
     @GetMapping("/get-order-count-by-partner-id/{partnerId}")
     public ResponseEntity<Integer> getOrderCountByPartnerId(@PathVariable String partnerId){
 
-        Integer orderCount = 0;
-
         //orderCount should denote the orders given by a partner-id
-        orderCount = orderService.getDeliveryPartnerById(partnerId).getNumberOfOrders();
+        Integer orderCount = orderService.getDeliveryPartnerById(partnerId).getNumberOfOrders();
         return new ResponseEntity<>(orderCount, HttpStatus.CREATED);
     }
 
